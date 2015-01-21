@@ -10,20 +10,23 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = NSMutableArray()
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //JMPMovieStore.sharedStore.loadRecords()
+        tableView.reloadData()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "updateRecords", forControlEvents: .ValueChanged)
+        
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationController?.toolbarHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,19 +34,15 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func insertNewObject(sender: AnyObject) {
-        objects.insertObject(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-
+    
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
-            (segue.destinationViewController as DetailViewController).detailItem = object
+                let movie = JMPMovieStore.sharedStore.get(indexPath.row)
+            (segue.destinationViewController as DetailViewController).detailItem = movie
+                println("Transferring DetailItem: \(movie)")
             }
         }
     }
@@ -55,14 +54,15 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return JMPMovieStore.sharedStore.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel!.text = object.description
+        let movie = JMPMovieStore.sharedStore.get(indexPath.row)
+        cell.textLabel!.text = movie.title
+        
         return cell
     }
 
@@ -73,12 +73,19 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
+            JMPMovieStore.sharedStore.removeMovieAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    func updateRecords() {
+        JMPMovieStore.sharedStore.loadRecords()
+        tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+    
 
 
 }

@@ -8,12 +8,17 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UITableViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var hdLabel: UILabel!
+    @IBOutlet weak var primaryDriveLabel: UILabel!
+    @IBOutlet weak var backupDriveLabel: UILabel!
+    @IBOutlet weak var opticalLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
 
-
-    var detailItem: AnyObject? {
+    
+    var detailItem: JMPMovie? {
         didSet {
             // Update the view.
             self.configureView()
@@ -21,10 +26,31 @@ class DetailViewController: UIViewController {
     }
 
     func configureView() {
+        
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+        if let movie: JMPMovie = self.detailItem {
+            if let titleLabel = self.titleLabel {
+                titleLabel.text = movie.title
+            }
+            if let type = self.typeLabel {
+                type.text = movie.type
+            }
+            if let hdLabel = self.hdLabel {
+                if movie.hd == true {
+                    self.hdLabel.text = "HD"
+                } else {
+                    self.hdLabel.text = "SD"
+                    self.hdLabel.textColor = UIColor.lightGrayColor()
+                }
+            }
+            if let primaryLabel = self.primaryDriveLabel {
+                primaryLabel.text = movie.primaryDrive
+            }
+            if let backup = self.backupDriveLabel {
+                backup.text = movie.backupDrive
+            }
+            if let optical = self.opticalLabel {
+                optical.text = movie.optical
             }
         }
     }
@@ -32,6 +58,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.title = "Movie"
+        println("My detail item is: \(self.detailItem)")
         self.configureView()
     }
 

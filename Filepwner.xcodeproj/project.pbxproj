@@ -14,6 +14,11 @@
 		962D92D41A60D51A001C15F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 962D92D31A60D51A001C15F0 /* Images.xcassets */; };
 		962D92D71A60D51A001C15F0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962D92D51A60D51A001C15F0 /* LaunchScreen.xib */; };
 		962D92E31A60D51A001C15F0 /* FilepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D92E21A60D51A001C15F0 /* FilepwnerTests.swift */; };
+		96BEC86C1A621E3E0066F564 /* JMPMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEC86B1A621E3E0066F564 /* JMPMovie.swift */; };
+		96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */; };
+		96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194541A64BAED00036FD2 /* DismissSegue.swift */; };
+		96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C2F93A1A6DF84300057E09 /* CloudKit.framework */; };
+		96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F912271A66100D0004D9AC /* JMPMovieStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,12 @@
 		962D92DC1A60D51A001C15F0 /* FilepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		962D92E11A60D51A001C15F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		962D92E21A60D51A001C15F0 /* FilepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilepwnerTests.swift; sourceTree = "<group>"; };
+		96BEC86B1A621E3E0066F564 /* JMPMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMPMovie.swift; sourceTree = "<group>"; };
+		96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMovieTableViewController.swift; sourceTree = "<group>"; };
+		96C194541A64BAED00036FD2 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
+		96C2F9391A6DF83A00057E09 /* Filepwner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Filepwner.entitlements; sourceTree = "<group>"; };
+		96C2F93A1A6DF84300057E09 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		96F912271A66100D0004D9AC /* JMPMovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JMPMovieStore.swift; path = ../JMPMovieStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +73,7 @@
 		962D92BC1A60D51A001C15F0 = {
 			isa = PBXGroup;
 			children = (
+				96C2F93A1A6DF84300057E09 /* CloudKit.framework */,
 				962D92C71A60D51A001C15F0 /* Filepwner */,
 				962D92DF1A60D51A001C15F0 /* FilepwnerTests */,
 				962D92C61A60D51A001C15F0 /* Products */,
@@ -79,12 +92,12 @@
 		962D92C71A60D51A001C15F0 /* Filepwner */ = {
 			isa = PBXGroup;
 			children = (
+				96C2F9391A6DF83A00057E09 /* Filepwner.entitlements */,
 				962D92CA1A60D51A001C15F0 /* AppDelegate.swift */,
-				962D92CC1A60D51A001C15F0 /* MasterViewController.swift */,
-				962D92CE1A60D51A001C15F0 /* DetailViewController.swift */,
-				962D92D01A60D51A001C15F0 /* Main.storyboard */,
+				96BEC86D1A621E480066F564 /* Model */,
+				96BEC86F1A621E6E0066F564 /* View */,
+				96BEC86E1A621E530066F564 /* Controller */,
 				962D92D31A60D51A001C15F0 /* Images.xcassets */,
-				962D92D51A60D51A001C15F0 /* LaunchScreen.xib */,
 				962D92C81A60D51A001C15F0 /* Supporting Files */,
 			);
 			path = Filepwner;
@@ -113,6 +126,35 @@
 				962D92E11A60D51A001C15F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96BEC86D1A621E480066F564 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96BEC86B1A621E3E0066F564 /* JMPMovie.swift */,
+				96F912271A66100D0004D9AC /* JMPMovieStore.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		96BEC86E1A621E530066F564 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				962D92CC1A60D51A001C15F0 /* MasterViewController.swift */,
+				962D92CE1A60D51A001C15F0 /* DetailViewController.swift */,
+				96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		96BEC86F1A621E6E0066F564 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				962D92D51A60D51A001C15F0 /* LaunchScreen.xib */,
+				962D92D01A60D51A001C15F0 /* Main.storyboard */,
+				96C194541A64BAED00036FD2 /* DismissSegue.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +206,12 @@
 				TargetAttributes = {
 					962D92C41A60D51A001C15F0 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = AKU8LU4XTN;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					962D92DB1A60D51A001C15F0 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -215,9 +263,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96BEC86C1A621E3E0066F564 /* JMPMovie.swift in Sources */,
 				962D92CF1A60D51A001C15F0 /* DetailViewController.swift in Sources */,
 				962D92CD1A60D51A001C15F0 /* MasterViewController.swift in Sources */,
+				96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */,
 				962D92CB1A60D51A001C15F0 /* AppDelegate.swift in Sources */,
+				96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */,
+				96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +392,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Filepwner/Filepwner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Filepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -350,9 +408,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Filepwner/Filepwner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Filepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -409,6 +473,7 @@
 				962D92E81A60D51A001C15F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		962D92E91A60D51A001C15F0 /* Build configuration list for PBXNativeTarget "FilepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +482,7 @@
 				962D92EB1A60D51A001C15F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
