@@ -81,14 +81,14 @@
                         <sections>
                             <tableViewSection id="tAa-So-eZx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="d0l-kR-E0w" detailTextLabel="EXs-2i-Yjx" style="IBUITableViewCellStyleValue1" id="3rM-Dh-69a">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="d0l-kR-E0w" detailTextLabel="EXs-2i-Yjx" rowHeight="46" style="IBUITableViewCellStyleValue1" id="3rM-Dh-69a">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3rM-Dh-69a" id="w7K-Lg-56V">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d0l-kR-E0w">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -105,7 +105,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Storage" id="PgI-Tr-Wsr">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="CPq-cP-ClN" detailTextLabel="6hb-O1-X44" style="IBUITableViewCellStyleValue1" id="YAh-Qb-XTA">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="CPq-cP-ClN" detailTextLabel="6hb-O1-X44" style="IBUITableViewCellStyleValue1" id="YAh-Qb-XTA">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAh-Qb-XTA" id="Cqs-8Q-nIs">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +125,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="DxE-jq-hDp" detailTextLabel="Lql-HK-Ccv" style="IBUITableViewCellStyleValue1" id="gDG-cu-ayR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="DxE-jq-hDp" detailTextLabel="Lql-HK-Ccv" style="IBUITableViewCellStyleValue1" id="gDG-cu-ayR">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDG-cu-ayR" id="Rpp-2n-65t">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -145,7 +145,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="pOe-Ll-tiG" detailTextLabel="0st-bY-FP9" style="IBUITableViewCellStyleValue1" id="NPZ-QE-7hL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="pOe-Ll-tiG" detailTextLabel="0st-bY-FP9" style="IBUITableViewCellStyleValue1" id="NPZ-QE-7hL">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NPZ-QE-7hL" id="mfo-Fw-kmP">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -169,7 +169,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="File Info" id="pOF-Ny-mWE">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ggK-aM-rOL" detailTextLabel="WEE-fU-wo9" style="IBUITableViewCellStyleValue1" id="mVI-Mc-ACX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="ggK-aM-rOL" detailTextLabel="WEE-fU-wo9" style="IBUITableViewCellStyleValue1" id="mVI-Mc-ACX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mVI-Mc-ACX" id="Rog-RN-B7B">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -187,6 +187,32 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Jl9-3k-McH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rap-uj-Pt8">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rap-uj-Pt8" id="Xkd-oc-weR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3u-0c-LzJ">
+                                                    <rect key="frame" x="255" y="7" width="90" height="30"/>
+                                                    <state key="normal" title="Delete Movie">
+                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteMovie:" destination="zus-MI-qbk" eventType="touchUpInside" id="om6-2I-1eM"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="U3u-0c-LzJ" secondAttribute="centerX" id="61k-Uc-QHh"/>
+                                                <constraint firstAttribute="centerY" secondItem="U3u-0c-LzJ" secondAttribute="centerY" id="sqB-ZT-JO8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -411,6 +437,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j2A-Fx-OWC"/>
+        <segue reference="OF3-jr-6Qw"/>
     </inferredMetricsTieBreakers>
 </document>

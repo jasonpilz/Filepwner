@@ -26,7 +26,6 @@ class DetailViewController: UITableViewController {
     }
 
     func configureView() {
-        
         // Update the user interface for the detail item.
         if let movie: JMPMovie = self.detailItem {
             if let titleLabel = self.titleLabel {
@@ -63,6 +62,10 @@ class DetailViewController: UITableViewController {
         self.configureView()
     }
 
+    @IBAction func deleteMovie(sender: AnyObject) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

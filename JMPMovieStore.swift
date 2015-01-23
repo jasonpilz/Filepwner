@@ -9,6 +9,10 @@
 import UIKit
 import CloudKit
 
+protocol ModelDelegate {
+    func modelUpdated()
+}
+
 class JMPMovieStore {
     
     // MARK: - Properties
@@ -18,6 +22,8 @@ class JMPMovieStore {
         }
         return Static.instance
     }
+    
+    var delegate: ModelDelegate?
     
     var movies: [JMPMovie] = []
     var count: Int {
@@ -70,19 +76,20 @@ class JMPMovieStore {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.notifyUser("Success", message: "Record saved successfully")
                     }
+                    self.loadRecords()
                 }
             }))
-    }
-    
-    func notifyUser(title: String, message: String) ->Void {
-        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
-        alert.show()
     }
     
     
     func loadRecords() {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Movie", predicate: predicate)
+        
+        // Sort alphabetically
+        let sort = NSSortDescriptor(key: "title", ascending: true)
+        query.sortDescriptors = [sort]
+        
         publicDB.performQuery(query, inZoneWithID: nil) { results, error in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue()) {
@@ -105,11 +112,24 @@ class JMPMovieStore {
                     
                     let moviesCount = JMPMovieStore.sharedStore.count
                     println("\(moviesCount) movies in the movieStore")
-                    
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.modelUpdated()
+                    println()
                 }
             }
         }
     }
+    
+    func deleteRecord(movie: JMPMovie) {
+        
+    }
+    
+    func notifyUser(title: String, message: String) ->Void {
+        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
+
     
     
     

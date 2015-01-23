@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, ModelDelegate {
 
 
     override func awakeFromNib() {
@@ -19,19 +19,41 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //JMPMovieStore.sharedStore.loadRecords()
-        tableView.reloadData()
+        JMPMovieStore.sharedStore.delegate = self
+        JMPMovieStore.sharedStore.loadRecords()
         
+        // Set up a refreshControl
         refreshControl = UIRefreshControl()
+        let attributedString = NSAttributedString(string: "Refreshing...")
+        refreshControl?.attributedTitle = attributedString
         refreshControl?.addTarget(self, action: "updateRecords", forControlEvents: .ValueChanged)
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.navigationController?.toolbarHidden = false
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func configureCounterLabel() {
+        // Set up toolbar movie counter label
+        var countLabel = UILabel(frame: CGRectMake(0, 0, 110, 44))
+        let font = UIFont.systemFontOfSize(11)
+        countLabel.textAlignment = .Center
+        countLabel.textColor = UIColor.blackColor()
+        countLabel.font = font
+        countLabel.backgroundColor = UIColor.clearColor()
+        
+        let countBbi = UIBarButtonItem(customView: countLabel)
+        let flexibleBbi = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        self.toolbarItems = [flexibleBbi, countBbi, flexibleBbi]
+        
+        var total = JMPMovieStore.sharedStore.count
+        var totalCount = ("\(total) Movies")
+        countLabel.text = totalCount
     }
 
     
@@ -82,8 +104,14 @@ class MasterViewController: UITableViewController {
     
     func updateRecords() {
         JMPMovieStore.sharedStore.loadRecords()
+    }
+    
+    // MARK: - ModelDelegate
+    
+    func modelUpdated() {
+        refreshControl?.endRefreshing()
+        self.configureCounterLabel()
         tableView.reloadData()
-        self.refreshControl?.endRefreshing()
     }
     
 
