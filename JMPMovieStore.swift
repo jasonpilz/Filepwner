@@ -16,6 +16,7 @@ protocol ModelDelegate {
 class JMPMovieStore {
     
     // MARK: - Properties
+    
     class var sharedStore: JMPMovieStore {
         struct Static {
             static let instance = JMPMovieStore()
@@ -32,6 +33,8 @@ class JMPMovieStore {
     let container: CKContainer
     let publicDB: CKDatabase
     let privateDB: CKDatabase
+    
+    // MARK: - Initializer
     
     init() {
         container = CKContainer.defaultContainer()
@@ -54,10 +57,19 @@ class JMPMovieStore {
     }
     
     func removeMovieAtIndex(index: Int) {
+        let movie = JMPMovieStore.sharedStore.get(index)
         movies.removeAtIndex(index)
+        JMPMovieStore.sharedStore.deleteRecord(movie)
+        
     }
     
-    // MARK: CloudKit
+    func notifyUser(title: String, message: String) ->Void {
+        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
+
+    
+    // MARK: - CloudKit
     
     func saveRecord(movie: JMPMovie) {
         let myRecord = CKRecord(recordType: "Movie")
@@ -76,7 +88,6 @@ class JMPMovieStore {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.notifyUser("Success", message: "Record saved successfully")
                     }
-                    self.loadRecords()
                 }
             }))
     }
@@ -101,14 +112,15 @@ class JMPMovieStore {
                     println("added a record to movies")
                     
                     // Add to JMPMoviestore Movies array
-                    let movie = JMPMovie(title: record.objectForKey?("title") as String,
-                        primaryDrive: record.objectForKey?("primaryDrive") as String,
-                        backupDrive: record.objectForKey?("backupDrive") as String,
-                        optical: record.objectForKey?("optical") as String,
-                        type: record.objectForKey?("type") as String,
-                        hd: record.objectForKey("hd") as Bool)
-                    
+                    let movie = JMPMovie(record: record as CKRecord, database: self.publicDB)
                     self.movies.append(movie)
+                    
+//                    let movie = JMPMovie(title: record.objectForKey?("title") as String,
+//                        primaryDrive: record.objectForKey?("primaryDrive") as String,
+//                        backupDrive: record.objectForKey?("backupDrive") as String,
+//                        optical: record.objectForKey?("optical") as String,
+//                        type: record.objectForKey?("type") as String,
+//                        hd: record.objectForKey("hd") as Bool)
                     
                     let moviesCount = JMPMovieStore.sharedStore.count
                     println("\(moviesCount) movies in the movieStore")
@@ -122,12 +134,23 @@ class JMPMovieStore {
     }
     
     func deleteRecord(movie: JMPMovie) {
+        println("Called JMPMovieStore deleteRecord:")
         
-    }
-    
-    func notifyUser(title: String, message: String) ->Void {
-        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
-        alert.show()
+        if let record = movie.record {
+            publicDB.deleteRecordWithID(record.recordID, completionHandler: ({returnRecord, error in
+                if let err = error {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.notifyUser("Delete Error", message: err.localizedDescription)
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.notifyUser("Success", message: "Record deleted successfully")
+                    }
+                }
+            }))
+        } else {
+            notifyUser("No record selected", message: "Use Query to select record to delete")
+        }
     }
 
     

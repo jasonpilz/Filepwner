@@ -18,6 +18,8 @@
 		96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */; };
 		96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194541A64BAED00036FD2 /* DismissSegue.swift */; };
 		96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C2F93A1A6DF84300057E09 /* CloudKit.framework */; };
+		96C2F93D1A75561700057E09 /* MagpulLogo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 96C2F93C1A75561700057E09 /* MagpulLogo.PNG */; };
+		96C2F93F1A75586200057E09 /* GlockLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C2F93E1A75586200057E09 /* GlockLogo.png */; };
 		96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F912271A66100D0004D9AC /* JMPMovieStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		96C194541A64BAED00036FD2 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		96C2F9391A6DF83A00057E09 /* Filepwner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Filepwner.entitlements; sourceTree = "<group>"; };
 		96C2F93A1A6DF84300057E09 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		96C2F93C1A75561700057E09 /* MagpulLogo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MagpulLogo.PNG; path = ../../../Downloads/MagpulLogo.PNG; sourceTree = "<group>"; };
+		96C2F93E1A75586200057E09 /* GlockLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GlockLogo.png; path = ../../../Downloads/GlockLogo.png; sourceTree = "<group>"; };
 		96F912271A66100D0004D9AC /* JMPMovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JMPMovieStore.swift; path = ../JMPMovieStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +81,8 @@
 				962D92C71A60D51A001C15F0 /* Filepwner */,
 				962D92DF1A60D51A001C15F0 /* FilepwnerTests */,
 				962D92C61A60D51A001C15F0 /* Products */,
+				96C2F93C1A75561700057E09 /* MagpulLogo.PNG */,
+				96C2F93E1A75586200057E09 /* GlockLogo.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,6 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C2F93D1A75561700057E09 /* MagpulLogo.PNG in Resources */,
+				96C2F93F1A75586200057E09 /* GlockLogo.png in Resources */,
 				962D92D21A60D51A001C15F0 /* Main.storyboard in Resources */,
 				962D92D71A60D51A001C15F0 /* LaunchScreen.xib in Resources */,
 				962D92D41A60D51A001C15F0 /* Images.xcassets in Resources */,

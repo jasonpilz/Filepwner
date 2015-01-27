@@ -17,19 +17,9 @@ class AddMovieTableViewController: UITableViewController {
     @IBOutlet weak var typeField: UITextField!
     @IBOutlet weak var hdSwitch: UISwitch!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Make Navigation bar completely Transparent
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        //self.navigationController?.navigationBar.shadowImage = UIImage()
-        //self.navigationController?.navigationBar.translucent = true
-        
-        //self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        //self.navigationController?.navigationBar.titleTextAttributes =
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
