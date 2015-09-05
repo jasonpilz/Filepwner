@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960382451A8FFE250046DDB2 /* fplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 960382441A8FFE250046DDB2 /* fplogo.png */; };
+		960382471A9001BA0046DDB2 /* fplogov2.png in Resources */ = {isa = PBXBuildFile; fileRef = 960382461A9001BA0046DDB2 /* fplogov2.png */; };
+		9613BB2B1AA1715200E428FC /* PrimaryDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613BB2A1AA1715200E428FC /* PrimaryDrive.swift */; };
 		962D92CB1A60D51A001C15F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D92CA1A60D51A001C15F0 /* AppDelegate.swift */; };
 		962D92CD1A60D51A001C15F0 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D92CC1A60D51A001C15F0 /* MasterViewController.swift */; };
 		962D92CF1A60D51A001C15F0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D92CE1A60D51A001C15F0 /* DetailViewController.swift */; };
@@ -14,12 +17,12 @@
 		962D92D41A60D51A001C15F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 962D92D31A60D51A001C15F0 /* Images.xcassets */; };
 		962D92D71A60D51A001C15F0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962D92D51A60D51A001C15F0 /* LaunchScreen.xib */; };
 		962D92E31A60D51A001C15F0 /* FilepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D92E21A60D51A001C15F0 /* FilepwnerTests.swift */; };
+		96527D8E1AA4CF5500A05458 /* DetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96527D8D1AA4CF5500A05458 /* DetailHeader.xib */; };
+		9680EB961ABBA021002C1C52 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680EB951ABBA021002C1C52 /* LibraryTableViewController.swift */; };
 		96BEC86C1A621E3E0066F564 /* JMPMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEC86B1A621E3E0066F564 /* JMPMovie.swift */; };
 		96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */; };
 		96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194541A64BAED00036FD2 /* DismissSegue.swift */; };
 		96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C2F93A1A6DF84300057E09 /* CloudKit.framework */; };
-		96C2F93D1A75561700057E09 /* MagpulLogo.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 96C2F93C1A75561700057E09 /* MagpulLogo.PNG */; };
-		96C2F93F1A75586200057E09 /* GlockLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C2F93E1A75586200057E09 /* GlockLogo.png */; };
 		96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F912271A66100D0004D9AC /* JMPMovieStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960382441A8FFE250046DDB2 /* fplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fplogo.png; sourceTree = "<group>"; };
+		960382461A9001BA0046DDB2 /* fplogov2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fplogov2.png; sourceTree = "<group>"; };
+		9613BB2A1AA1715200E428FC /* PrimaryDrive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryDrive.swift; sourceTree = "<group>"; };
 		962D92C51A60D51A001C15F0 /* Filepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		962D92C91A60D51A001C15F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		962D92CA1A60D51A001C15F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,13 +51,13 @@
 		962D92DC1A60D51A001C15F0 /* FilepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		962D92E11A60D51A001C15F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		962D92E21A60D51A001C15F0 /* FilepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilepwnerTests.swift; sourceTree = "<group>"; };
+		96527D8D1AA4CF5500A05458 /* DetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailHeader.xib; sourceTree = "<group>"; };
+		9680EB951ABBA021002C1C52 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		96BEC86B1A621E3E0066F564 /* JMPMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMPMovie.swift; sourceTree = "<group>"; };
 		96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMovieTableViewController.swift; sourceTree = "<group>"; };
 		96C194541A64BAED00036FD2 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		96C2F9391A6DF83A00057E09 /* Filepwner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Filepwner.entitlements; sourceTree = "<group>"; };
 		96C2F93A1A6DF84300057E09 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		96C2F93C1A75561700057E09 /* MagpulLogo.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MagpulLogo.PNG; path = ../../../Downloads/MagpulLogo.PNG; sourceTree = "<group>"; };
-		96C2F93E1A75586200057E09 /* GlockLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GlockLogo.png; path = ../../../Downloads/GlockLogo.png; sourceTree = "<group>"; };
 		96F912271A66100D0004D9AC /* JMPMovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JMPMovieStore.swift; path = ../JMPMovieStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,8 +87,6 @@
 				962D92C71A60D51A001C15F0 /* Filepwner */,
 				962D92DF1A60D51A001C15F0 /* FilepwnerTests */,
 				962D92C61A60D51A001C15F0 /* Products */,
-				96C2F93C1A75561700057E09 /* MagpulLogo.PNG */,
-				96C2F93E1A75586200057E09 /* GlockLogo.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +116,8 @@
 		962D92C81A60D51A001C15F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				960382461A9001BA0046DDB2 /* fplogov2.png */,
+				960382441A8FFE250046DDB2 /* fplogo.png */,
 				962D92C91A60D51A001C15F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -146,9 +152,11 @@
 		96BEC86E1A621E530066F564 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9680EB951ABBA021002C1C52 /* LibraryTableViewController.swift */,
 				962D92CC1A60D51A001C15F0 /* MasterViewController.swift */,
 				962D92CE1A60D51A001C15F0 /* DetailViewController.swift */,
 				96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */,
+				9613BB2A1AA1715200E428FC /* PrimaryDrive.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 			children = (
 				962D92D51A60D51A001C15F0 /* LaunchScreen.xib */,
 				962D92D01A60D51A001C15F0 /* Main.storyboard */,
+				96527D8D1AA4CF5500A05458 /* DetailHeader.xib */,
 				96C194541A64BAED00036FD2 /* DismissSegue.swift */,
 			);
 			name = View;
@@ -249,11 +258,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96C2F93D1A75561700057E09 /* MagpulLogo.PNG in Resources */,
-				96C2F93F1A75586200057E09 /* GlockLogo.png in Resources */,
 				962D92D21A60D51A001C15F0 /* Main.storyboard in Resources */,
 				962D92D71A60D51A001C15F0 /* LaunchScreen.xib in Resources */,
+				960382451A8FFE250046DDB2 /* fplogo.png in Resources */,
+				96527D8E1AA4CF5500A05458 /* DetailHeader.xib in Resources */,
 				962D92D41A60D51A001C15F0 /* Images.xcassets in Resources */,
+				960382471A9001BA0046DDB2 /* fplogov2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +284,10 @@
 				96BEC86C1A621E3E0066F564 /* JMPMovie.swift in Sources */,
 				962D92CF1A60D51A001C15F0 /* DetailViewController.swift in Sources */,
 				962D92CD1A60D51A001C15F0 /* MasterViewController.swift in Sources */,
+				9613BB2B1AA1715200E428FC /* PrimaryDrive.swift in Sources */,
 				96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */,
 				962D92CB1A60D51A001C15F0 /* AppDelegate.swift in Sources */,
+				9680EB961ABBA021002C1C52 /* LibraryTableViewController.swift in Sources */,
 				96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */,
 				96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */,
 			);
@@ -405,6 +417,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Filepwner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -421,6 +434,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Filepwner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
