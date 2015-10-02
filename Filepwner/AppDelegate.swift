@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
         
         // SplitViewController Display style
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         UIBarButtonItem.appearance().tintColor = UIColor(red: 255.0/255.0, green: 215.0/255.0, blue: 0.0/0.0, alpha: 0.9)
         
         // Register for Push Notifications
-        let settings = UIUserNotificationSettings(forTypes: .Alert | .Badge | .Sound, categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
@@ -46,27 +46,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        println("Recieved Remote Notification.")
+        print("Recieved Remote Notification.")
         
-        let notification: CKNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+        var converedUserInfo:[String:NSObject] = [String:NSObject]()
+        for (key, value) in userInfo {
+            if let setValue = value as? NSObject {
+                converedUserInfo[key as! String] = setValue
+            }
+        }
+        
+        let notification: CKNotification = CKNotification(fromRemoteNotificationDictionary: converedUserInfo)
         if (notification.notificationType == CKNotificationType.Query) {
             let queryNotification = notification as! CKQueryNotification
             let recordID = queryNotification.recordID
-            JMPMovieStore.sharedStore.fetchRecord(recordID)
+            JMPMovieStore.sharedStore.fetchRecord(recordID!)
         }
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("Registered for push notifications with token:\(deviceToken)")
+        print("Registered for push notifications with token:\(deviceToken)")
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println("Failed push notification registration with error:\(error.localizedDescription)")
+        print("Failed push notification registration with error:\(error.localizedDescription)")
     }
     
     // MARK: - Split view
     
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         if let secondaryAsNavController = secondaryViewController as? UINavigationController {
             if let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
                 if topAsDetailController.detailItem == nil {
@@ -85,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         JMPMovieStore.sharedStore.resetBadgeCounter()
         
-        println("Called resetBadgeCounter()")
+        print("Called resetBadgeCounter()")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 

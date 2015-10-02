@@ -43,13 +43,13 @@ class AddMovieTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "dismissAndSave" {
-            let movie = JMPMovie(title: titleField.text,
-                seriesTitle: seriesTitleField.text,
-                primaryDrive: primaryDriveField.text,
-                backupDrive: backupDriveField.text,
-                optical: opticalField.text,
-                type: typeField.text,
-                size: (sizeField.text as NSString).doubleValue,
+            let movie = JMPMovie(title: titleField.text!,
+                seriesTitle: seriesTitleField.text!,
+                primaryDrive: primaryDriveField.text!,
+                backupDrive: backupDriveField.text!,
+                optical: opticalField.text!,
+                type: typeField.text!,
+                size: (sizeField.text as NSString!).doubleValue,
                 wishlist: wishListSwitch.on,
                 watched: watchedSwitch.on,
                 hd: hdSwitch.on)

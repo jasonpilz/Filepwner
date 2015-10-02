@@ -89,7 +89,7 @@ class JMPMovieStore {
                 self.notifyUser("Save error", message: err.localizedDescription)
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    println("Record saved successfully")
+                    print("Record saved successfully")
                     self.notifyUser("Success", message: "Movie saved successfully")
                 }
             }
@@ -97,7 +97,7 @@ class JMPMovieStore {
     }
     
     func deleteRecord(movie: JMPMovie) {
-        println("Called JMPMovieStore deleteRecord:")
+        print("Called JMPMovieStore deleteRecord:")
         
         // Remove the record from the public Database
         if let record = movie.record {
@@ -107,10 +107,10 @@ class JMPMovieStore {
                         self.notifyUser("Delete Error", message: err.localizedDescription)
                     }
                 } else {
-                    println("Deleted Record sucessfully")
+                    print("Deleted Record sucessfully")
                     
                     // Remove the record from the local 'movies' array
-                    if let index = find(self.movies, movie) {
+                    if let index = self.movies.indexOf(movie) {
                         self.movies.removeAtIndex(index)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
@@ -166,16 +166,16 @@ class JMPMovieStore {
         
     }
     
-    func queryCompletionBlock(cursor: CKQueryCursor!, error: NSError!) {
+    func queryCompletionBlock(cursor: CKQueryCursor?, error: NSError?) {
         if error != nil {
             dispatch_async(dispatch_get_main_queue()) {
-                self.notifyUser("Cloud access error", message: error.localizedDescription)
+                self.notifyUser("Cloud access error", message: error!.localizedDescription)
                 self.delegate?.updateInterfaceForNetworkIssue()
             }
         } else if cursor != nil {
             //println("Got Cursor!")
             
-            let cursorQuery = CKQueryOperation(cursor: cursor)
+            let cursorQuery = CKQueryOperation(cursor: cursor!)
             cursorQuery.recordFetchedBlock = self.recordFetchBlock
             cursorQuery.queryCompletionBlock = self.queryCompletionBlock
             self.publicDB.addOperation(cursorQuery)
@@ -189,9 +189,7 @@ class JMPMovieStore {
         //let truePredicate = NSPredicate(value: true)
         
         let predicate = NSPredicate(format: "title != %@", "")
-        
         let subscription = CKSubscription(recordType: "Movie", predicate: predicate, options: .FiresOnRecordCreation)
-        
         let notificationInfo = CKNotificationInfo()
         notificationInfo.alertBody = "A new movie was added"
         notificationInfo.shouldBadge = true
@@ -201,7 +199,7 @@ class JMPMovieStore {
         
         publicDB.saveSubscription(subscription, completionHandler: ({returnRecord, error in
             if let err = error {
-                println("Subscription failed %@", err.localizedDescription)
+                print("Subscription failed %@", err.localizedDescription)
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.notifyUser("Success", message: "Subscription set up successfully")
@@ -218,8 +216,8 @@ class JMPMovieStore {
                 }
             } else {
                 
-                println("Fetched a record")
-                let movie = JMPMovie(record: record, database: self.publicDB)
+                print("Fetched a record")
+                let movie = JMPMovie(record: record!, database: self.publicDB)
                 self.movies.append(movie)
                 
                 // RE-SORT Movies ARRAY
@@ -227,18 +225,18 @@ class JMPMovieStore {
                 let sortTitle = NSSortDescriptor(key: "title", ascending: true)
                 // Then sort by Date Created
                 let sortDateCreated = NSSortDescriptor(key: "dateCreated", ascending: true)
-                let sortDescriptors = [sortTitle, sortDateCreated]
+                _ = [sortTitle, sortDateCreated]
                 
                 // TO-DO
                 // Replace Movies array with re-sorted objects
                 
-                println("Added a record to movies")
+                print("Added a record to movies")
                 let moviesCount = JMPMovieStore.sharedStore.count
-                println("\(moviesCount) movies in the movieStore")
+                print("\(moviesCount) movies in the movieStore")
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.delegate?.modelUpdated()
-                    println()
+                    print("")
                 }
             }
         }))
@@ -249,7 +247,7 @@ class JMPMovieStore {
         let badgeResetOperation = CKModifyBadgeOperation(badgeValue: 0)
         badgeResetOperation.modifyBadgeCompletionBlock = {(error) -> Void in
             if error != nil {
-                println("Error resetting badge: \(error)")
+                print("Error resetting badge: \(error)")
             } else {
                 UIApplication.sharedApplication().applicationIconBadgeNumber = 0
             }
@@ -260,30 +258,24 @@ class JMPMovieStore {
     func checkSubscriptions() {
         publicDB.fetchAllSubscriptionsWithCompletionHandler ({subscriptions, error in
             var subscriptionIDs: [String] = []
-            for subscriptionObject in subscriptions {
-                var subscription: CKSubscription = subscriptionObject as! CKSubscription
+            for subscriptionObject in subscriptions! {
+                let subscription: CKSubscription = subscriptionObject 
                 subscriptionIDs.append(subscription.subscriptionID)
-                println("Checked one subscription - \(subscription)")
+                print("Checked one subscription - \(subscription)")
             }
         })
     }
     
     func deleteSubscriptions() {
         publicDB.fetchAllSubscriptionsWithCompletionHandler ({subscriptions, error in
-            for subscriptionObject in subscriptions {
-                var subscription: CKSubscription = subscriptionObject as! CKSubscription
+            for subscriptionObject in subscriptions! {
+                let subscription: CKSubscription = subscriptionObject 
                 self.publicDB.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: ({ ID, error in
                     
-                    println("DeletedSubscriptionWithID")
+                    print("DeletedSubscriptionWithID")
                 }))
             }
         })
     }
-    
-    
-    
-    
-    
-    
 }
 

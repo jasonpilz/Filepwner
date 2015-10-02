@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UITableViewController, UITableViewDelegate {
+class DetailViewController: UITableViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var seriesTitleLabel: UILabel!
@@ -37,14 +37,14 @@ class DetailViewController: UITableViewController, UITableViewDelegate {
         
         if self.detailItem == nil {
             
-            var placeholderView = UIView(frame: self.tableView.frame)
-            placeholderView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+            let placeholderView = UIView(frame: self.tableView.frame)
+            placeholderView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
             placeholderView.backgroundColor = UIColor.groupTableViewBackgroundColor()
             self.tableView.addSubview(placeholderView)
             
             let logoImageView = UIImageView(image: UIImage(named: "fplogov2.png"))
             logoImageView.contentMode = .ScaleAspectFit
-            logoImageView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
+            logoImageView.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleWidth]
             
             logoImageView.frame.size.width = 650
             logoImageView.frame.size.height = 110
@@ -63,7 +63,7 @@ class DetailViewController: UITableViewController, UITableViewDelegate {
             self.navigationItem.rightBarButtonItem?.enabled = false
         }
 
-        println("My detail item is: \(self.detailItem)")
+        print("My detail item is: \(self.detailItem)")
         self.configureView()
     }
     
@@ -103,14 +103,14 @@ class DetailViewController: UITableViewController, UITableViewDelegate {
             if let type = self.typeLabel {
                 type.text = movie.type
             }
-            if let size = self.sizeLabel {
+            if let _ = self.sizeLabel {
                 if movie.size > 0 {
                     sizeLabel.text = (movie.size!.description) + (" GB")
                 } else if movie.size == 0 {
                     sizeLabel.text = ""
                 }
             }
-            if let hdLabel = self.hdLabel {
+            if let _ = self.hdLabel {
                 if movie.hd == true {
                     self.hdLabel.text = "HD"
                 } else {
@@ -129,7 +129,7 @@ class DetailViewController: UITableViewController, UITableViewDelegate {
             }
             
             // Set up a date label in the toolbar
-            var dateLabel = UILabel(frame: CGRectMake(0, 0, 270, 44))
+            let dateLabel = UILabel(frame: CGRectMake(0, 0, 270, 44))
             dateLabel.textAlignment = .Center
             dateLabel.backgroundColor = UIColor.clearColor()
             dateLabel.font = UIFont.systemFontOfSize(11)
@@ -154,7 +154,7 @@ class DetailViewController: UITableViewController, UITableViewDelegate {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         let alertCancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
-        let alertDeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (ACTION :UIAlertAction!) in
+        let alertDeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (ACTION :UIAlertAction) in
             JMPMovieStore.sharedStore.deleteRecord(self.detailItem!)
             self.performSegueWithIdentifier("unwindSegue", sender: self)
             })

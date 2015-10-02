@@ -27,8 +27,8 @@ class LibraryTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         // Enables gradual deselection of cell when view is 'swiped' to.
-        if tableView.indexPathForSelectedRow() != nil {
-            self.tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow()!, animated: true)
+        if tableView.indexPathForSelectedRow != nil {
+            self.tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow!, animated: true)
         }
     }
 

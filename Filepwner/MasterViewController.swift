@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController, ModelDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class MasterViewController: UITableViewController, ModelDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     // MARK: - Properties
     
@@ -50,7 +50,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+            self.detailViewController = controllers[controllers.count-1] as? DetailViewController // Removed .topViewController from after count-1]
         }
         
         model.delegate = self
@@ -119,8 +119,8 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
         self.configureCounterLabel()
         
         // Used to correct issue of tableviewcell not deselecting.
-        if tableView.indexPathForSelectedRow() != nil {
-            self.tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow()!, animated: true)
+        if tableView.indexPathForSelectedRow != nil {
+            self.tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow!, animated: true)
         }
     }
 
@@ -135,7 +135,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
         if segue.identifier == "showDetail" {
             
             if (self.searchController.active) {
-                let indexPath = self.tableView.indexPathForSelectedRow()!
+                let indexPath = self.tableView.indexPathForSelectedRow!
                 let movie = self.filteredMovies[indexPath.row]
                 
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -144,7 +144,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
                 controller.navigationItem.leftItemsSupplementBackButton = true
             } else {
                 
-                let indexPath = self.tableView.indexPathForSelectedRow()!
+                let indexPath = self.tableView.indexPathForSelectedRow!
                 let movie = JMPMovieStore.sharedStore.get(indexPath.row)
                 
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -156,7 +156,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
     }
     
     @IBAction func unwindToMasterVC(segue: UIStoryboardSegue) {
-        println("unwindSegue Activated!")
+        print("unwindSegue Activated!")
     }
 
     // MARK: - Table View
@@ -180,7 +180,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
         return nil
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         // Used to populate tableview Index
         
 //        let array: Array = ["0"]
@@ -198,7 +198,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         // This block used for Search Display Controller feature...
         var movie: JMPMovie
@@ -285,7 +285,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
     // MARK: - Search Results Updating Delegate
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        self.filterContentForSearchText(self.searchController.searchBar.text)
+        self.filterContentForSearchText(self.searchController.searchBar.text!)
         configureCounterLabel()
         self.tableView.reloadData()
     }
@@ -324,7 +324,7 @@ class MasterViewController: UITableViewController, ModelDelegate, UITableViewDat
             totalMovies = JMPMovieStore.sharedStore.movies.count
         }
         
-        var infoLabel = UILabel(frame: CGRectMake(0, 0, 110, 44))
+        let infoLabel = UILabel(frame: CGRectMake(0, 0, 110, 44))
         infoLabel.textAlignment = .Center
         infoLabel.backgroundColor = UIColor.clearColor()
         infoLabel.font = UIFont.systemFontOfSize(11)
