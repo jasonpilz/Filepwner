@@ -22,8 +22,8 @@
 		96BEC86C1A621E3E0066F564 /* JMPMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEC86B1A621E3E0066F564 /* JMPMovie.swift */; };
 		96C194531A64B60900036FD2 /* AddMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */; };
 		96C194551A64BAED00036FD2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C194541A64BAED00036FD2 /* DismissSegue.swift */; };
-		96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C2F93A1A6DF84300057E09 /* CloudKit.framework */; };
 		96F912281A66100D0004D9AC /* JMPMovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F912271A66100D0004D9AC /* JMPMovieStore.swift */; };
+		CBED636F1BBED2B80092EC42 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBED636E1BBED2B80092EC42 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +57,8 @@
 		96C194521A64B60900036FD2 /* AddMovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMovieTableViewController.swift; sourceTree = "<group>"; };
 		96C194541A64BAED00036FD2 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		96C2F9391A6DF83A00057E09 /* Filepwner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Filepwner.entitlements; sourceTree = "<group>"; };
-		96C2F93A1A6DF84300057E09 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		96F912271A66100D0004D9AC /* JMPMovieStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JMPMovieStore.swift; path = ../JMPMovieStore.swift; sourceTree = "<group>"; };
+		CBED636E1BBED2B80092EC42 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96C2F93B1A6DF84300057E09 /* CloudKit.framework in Frameworks */,
+				CBED636F1BBED2B80092EC42 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 		962D92BC1A60D51A001C15F0 = {
 			isa = PBXGroup;
 			children = (
-				96C2F93A1A6DF84300057E09 /* CloudKit.framework */,
+				CBED636E1BBED2B80092EC42 /* CloudKit.framework */,
 				962D92C71A60D51A001C15F0 /* Filepwner */,
 				962D92DF1A60D51A001C15F0 /* FilepwnerTests */,
 				962D92C61A60D51A001C15F0 /* Products */,
